@@ -4,7 +4,8 @@
   "description": "A project to test rabbitmq",
   "scripts": {
     "lint": "eslint src/**",
-    "lintfix": "eslint src/** --fix"
+    "lintfix": "eslint src/** --fix",
+    "receive": "node src/simple/receive.js"
   },
   "author": "Bruno Camboim and Gustavo Steinmetz",
   "license": "ISC",

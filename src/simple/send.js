@@ -13,14 +13,16 @@ amqp.connect('amqp://localhost:5673', function(error0, connection) {
       throw error1;
     }
 
-    const msg = 'Hello World!';
-    
-    channel.assertQueue(RABBITMQ_QUEUE_NAME, {
-      durable: false
-    });
-    channel.sendToQueue(RABBITMQ_QUEUE_NAME, Buffer.from(msg));
+    for (let i = 1; i < 100; i++) {
+      const msg = `Message ${i}`;
 
-    console.log(' [x] Sent %s', msg);
+      channel.assertQueue(RABBITMQ_QUEUE_NAME, {
+        durable: false
+      });
+      channel.sendToQueue(RABBITMQ_QUEUE_NAME, Buffer.from(msg));
+  
+      console.log(' [x] Sent %s', msg);
+    }    
   });
   setTimeout(function() {
     connection.close();
